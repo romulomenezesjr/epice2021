@@ -1,0 +1,16 @@
+{
+  "title": "Palestras",
+  "text": "As palestras deste ano serão...",
+  "section": [
+    {
+      "title": "XPTO",
+      "content": "Velit id ea consequat adipisicing veniam nostrud aliquip excepteur do. Ea amet commodo qui fugiat cillum ipsum deserunt consequat ullamco. Fugiat aute culpa labore aliquip consequat exercitation voluptate irure quis labore occaecat. Nulla velit commodo laboris amet nisi sint nostrud excepteur exercitation enim. Labore do occaecat aliquip cupidatat duis ea anim nisi minim Lorem. Laborum irure velit et laborum culpa do et.",
+      "icon": "notes.svg"
+    },
+    {
+      "title": "XPTO",
+      "content": "Ut sint pariatur cillum culpa excepteur nulla laboris. Sunt deserunt do aliquip magna duis id culpa sunt enim eiusmod occaecat. Ex ad esse et enim cupidatat eiusmod excepteur reprehenderit anim commodo labore voluptate adipisicing. Elit elit consectetur esse ad esse id aliquip cupidatat. Labore aute minim nulla quis id esse consectetur ipsum veniam est laborum duis velit. Sit deserunt consequat non id tempor aute veniam et.",
+      "icon": "notes.svg"
+    }
+  ]
+}
