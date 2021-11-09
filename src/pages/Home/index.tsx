@@ -5,6 +5,8 @@ import LectureContent from "../../content/LectureContent.json";
 import ScheduleContent from "../../content/ScheduleContent.json";
 import MeetingContent from "../../content/MeetingContent.json";
 import RegistrationContent from "../../content/RegistrationContent.json";
+import { Timeline } from "antd";
+import MyTimeline from "../../components/MyTimeline";
 
 const Contact = lazy(() => import("../../components/ContactForm"));
 const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
@@ -44,6 +46,14 @@ const Home = () => {
         icon="calendar2.jpg"
         id="mission"
       />
+      <MyTimeline
+       title={AboutContent.title}
+       content={AboutContent.text}
+       button={AboutContent.button}
+       ></MyTimeline>
+
+
+       
       <ContentBlock
         type="left"
         title={MeetingContent.title}
