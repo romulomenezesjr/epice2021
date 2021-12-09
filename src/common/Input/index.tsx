@@ -1,18 +1,32 @@
-import { withTranslation } from "react-i18next";
-import { Container, StyledInput } from "./styles";
-import { Label } from "../TextArea/styles";
+import {
+  Input as ChakraInput,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react';
 import { InputProps } from "../types";
 
-const Input = ({ name, placeholder, onChange, t }: InputProps) => (
-  <Container>
-    <Label htmlFor={name}>{t(placeholder)}</Label>
-    <StyledInput
-      placeholder={t(placeholder)}
-      name={name}
-      id={name}
-      onChange={onChange}
+const Input = ({ name, placeholder, onChange, type }: InputProps) => (
+  <InputGroup>
+    <InputLeftElement
+      width="3rem"
+      height="100%"
+      color='#000'
+      _focus={{ color: '#fff' }}
     />
-  </Container>
+    <ChakraInput
+      required
+      onChange={onChange}
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      focusBorderColor="purple.500"
+      bg="gray.200"
+      _hover={{
+        bg: 'gray.100'
+      }}
+      rounded="lg"
+    />
+  </InputGroup>
 );
 
-export default withTranslation()(Input);
+export default Input

@@ -84,11 +84,6 @@ export const Styles = createGlobalStyle`
     a {
         text-decoration: none;
         outline: none;
-        color: #2E186A;
-
-        :hover {
-            color: #2e186a;
-        }
     }
     
     *:focus {

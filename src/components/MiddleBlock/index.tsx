@@ -1,42 +1,29 @@
-import { Row, Col } from "antd";
-import { withTranslation } from "react-i18next";
-import { Slide } from "react-awesome-reveal";
-import { Button } from "../../common/Button";
-import { MiddleBlockSection, Content, ContentWrapper } from "./styles";
-
+import React from 'react';
+import { Jumbotron } from '../../common/';
+import { Heading, Image, Skeleton, Text } from '@chakra-ui/react';
 interface MiddleBlockProps {
   title: string;
   content: string;
-  button: string;
-  t: any;
+  id: number;
+  directions: string;
+  img: string;
 }
-
-const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
-  const scrollTo = (id: string) => {
-    const element = document.getElementById(id) as HTMLDivElement;
-    element.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+const MiddleBlock: React.FC<MiddleBlockProps> = ({ title, content, id, directions, img }) => {
   return (
-    <MiddleBlockSection>
-      <Slide direction="up">
-        <Row justify="center" align="middle">
-          <ContentWrapper>
-            <Col lg={24} md={24} sm={24} xs={24}>
-              <h6>{t(title)}</h6>
-              <Content>{t(content)}</Content>
-              {button && (
-                <Button name="submit" onClick={() => scrollTo("mission")}>
-                  {t(button)}
-                </Button>
-              )}
-            </Col>
-          </ContentWrapper>
-        </Row>
-      </Slide>
-    </MiddleBlockSection>
+    <Jumbotron.Container>
+      <Jumbotron key={id} directions={directions}>
+        <Jumbotron.Pane>
+          <Heading>{title}</Heading>
+          <Text fallback={<Skeleton />}>
+            {content}
+          </Text>
+        </Jumbotron.Pane>
+        <Jumbotron.Pane>
+          <Image id={`id${id}`} src={img} alt={title} fallback={<Skeleton />} />
+        </Jumbotron.Pane>
+      </Jumbotron>
+    </Jumbotron.Container>
   );
 };
 
-export default withTranslation()(MiddleBlock);
+export default MiddleBlock;

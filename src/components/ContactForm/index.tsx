@@ -1,18 +1,16 @@
 import { Row, Col } from "antd";
-import { withTranslation } from "react-i18next";
 import { Slide, Zoom } from "react-awesome-reveal";
 import { ContactProps, ValidationTypeProps } from "./types";
+import { Container, Heading, Text } from '@chakra-ui/react'
 import { useForm } from "../../common/utils/useForm";
 import validate from "../../common/utils/validationRules";
 import { Button } from "../../common/Button";
-import Block from "../Block";
 import Input from "../../common/Input";
-import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
+import { FormGroup, Span, ButtonContainer } from "./styles";
+import { handleSubmit } from "../../common/utils/googleFormsSubmit"
 
-import {handleSubmit} from "../../common/utils/googleFormsSubmit"
+const Contact = ({ title, content, id }: ContactProps) => {
 
-const Contact = ({ title, content, id, t }: ContactProps) => {
-  
   const { values, errors, handleChange } = useForm(
     validate
   ) as any;
@@ -27,16 +25,19 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
   };
 
   return (
-    <ContactContainer id={id}>
+    <Container id={id} maxW="160ch" mb={10}>
       <Row justify="space-between" align="middle">
         <Col lg={12} md={11} sm={24} xs={24}>
           <Slide direction="left">
-            <Block title={title} content={content} />
+            <Heading>
+              {title}
+            </Heading>
+            <Text>{content}</Text>
           </Slide>
         </Col>
         <Col lg={12} md={12} sm={24} xs={24}>
-        <Slide direction="right">
-            <FormGroup autoComplete="off" onSubmit={ e => handleSubmit(e,values,alert("Inscrição realizada com sucesso"))}>
+          <Slide direction="right">
+            <FormGroup autoComplete="off" onSubmit={e => handleSubmit(e, values, alert("Inscrição realizada com sucesso"))}>
               <Col span={24}>
                 <Input
                   type="text"
@@ -67,16 +68,20 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
                 <ValidationType type="course" />
               </Col>
               <ButtonContainer>
-                <Button name="submit">{t("Realizar inscrição")}</Button>
+                <Button
+                  mt="6"
+                  colorScheme="purple"
+                  size="lg"
+                  name="submit">
+                  Realizar inscrição
+                </Button>
               </ButtonContainer>
             </FormGroup>
           </Slide>
-
-       
         </Col>
       </Row>
-    </ContactContainer>
+    </Container>
   );
 };
 
-export default withTranslation()(Contact);
+export default Contact;
