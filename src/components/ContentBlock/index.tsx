@@ -1,10 +1,11 @@
 import React from 'react';
 import {
   Box, Container, Text, Heading,
-  Stack, SimpleGrid, Avatar, Center
+  Stack, SimpleGrid, Avatar, Center, IconButton
 } from '@chakra-ui/react';
 import { Fade } from 'react-awesome-reveal'
-import { palestrantes } from '../../content/palestrantes'
+import { palestrantes } from '../../content/palestrantes';
+import { FaInstagram, FaGithub } from 'react-icons/fa';
 const Palestrantes: React.FC = () => {
   return (
     <Box as="section" id="palestras">
@@ -50,6 +51,28 @@ const Palestrantes: React.FC = () => {
                         <Text dangerouslySetInnerHTML={{
                           __html: member.frase
                         }} />
+                        <Center>
+                          <Stack direction={'row'} spacing={6}>
+                            <IconButton
+                              as="a"
+                              href="#"
+                              aria-label="Instagram"
+                              icon={<FaInstagram fontSize="30px" />}
+                              _hover={{
+                                bg: 'gray.50'
+                              }}
+                            />
+                            <IconButton
+                              as="a"
+                              href="#"
+                              aria-label="Githu"
+                              icon={<FaGithub fontSize="30px" />}
+                              _hover={{
+                                bg: 'gray.50'
+                              }}
+                            />
+                          </Stack>
+                        </Center>
                       </Stack>
                     </Stack>
                   </Box>

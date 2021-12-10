@@ -8,7 +8,6 @@ import {
 	Image,
 	Icon,
 	IconProps,
-	useColorModeValue,
 } from '@chakra-ui/react';
 import { Button } from '../../common/Button';
 import { Link } from 'react-scroll';
@@ -84,7 +83,7 @@ export default function HomeHero({ title, subtitle, button }: HomeProps) {
 						top={'-20%'}
 						left={0}
 						zIndex={-1}
-						color={useColorModeValue('red.50', 'red.400')}
+						color='red.50'
 					/>
 					<Box
 						rounded={'2xl'}
