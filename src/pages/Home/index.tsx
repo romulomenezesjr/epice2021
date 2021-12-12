@@ -33,14 +33,13 @@ export default function Home() {
           button={IntroContent.buttontext}
         />
       </PageTransition>
-        <MiddleBlock
-          title={AboutContent.title}
-          content={AboutContent.text}
-          directions={AboutContent.directions}
-          id={AboutContent.id}
-          img={AboutContent.img}
-        />
-
+      <MiddleBlock
+        title={AboutContent.title}
+        content={AboutContent.text}
+        directions={AboutContent.directions}
+        id={AboutContent.id}
+        img={AboutContent.img}
+      />
       <ContentBlock />
       <MyTimeline />
       <ContentTable
@@ -60,8 +59,9 @@ type ContentProps = {
   subtitle: string;
 }
 const ContentTable: React.FC<ContentProps> = ({ title, subtitle }) => {
+  const icp = useColorModeValue("#18216d", "white");
   return (
-    <Box as="section" id="mesa-redonda">
+    <Box as="section" id="mesa-redonda" d="flex" flexDir="row-reverse">
       <ChakraContainer maxW='7xl' py={{ base: 14 }}>
         <Box
           rounded={'xl'}
@@ -70,10 +70,10 @@ const ContentTable: React.FC<ContentProps> = ({ title, subtitle }) => {
           py={10}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
             <Box maxW="90%" mt={10}>
-              <Heading as={'h3'} mb={2}>
+              <Heading as={'h3'} mb={2} color={icp}>
                 {title}
               </Heading>
-              <Text fontSize={'lg'}>
+              <Text fontSize={'lg'} color={icp}>
                 {subtitle}
               </Text>
             </Box>

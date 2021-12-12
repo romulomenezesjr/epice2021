@@ -2,17 +2,19 @@
 import React from 'react';
 import {
   Box, Button, chakra, CloseButton, Flex, HStack,
-  IconButton, VisuallyHidden, VStack, useDisclosure
+  IconButton, VisuallyHidden, VStack, useDisclosure, useColorModeValue, useColorMode
 } from '@chakra-ui/react';
 import { Link } from "react-scroll";
-import { Span } from './styles'
+import { FaMoon, FaSun } from "react-icons/fa";
 const DURATION = 1000;
 import { AiOutlineMenu } from 'react-icons/ai';
 export default function NavHero() {
   const mobileNav = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
     <React.Fragment>
       <chakra.header
+        borderTop="10px solid #8257e5"
         shadow="md"
         transition="all 0.5s ease-in-out"
         pos="fixed"
@@ -23,7 +25,7 @@ export default function NavHero() {
         py={4}
         mb={2}
         boxShadow="none"
-        bg="linear-gradient(to bottom, white, rgb(213, 230, 234, 0.4))"
+        bg={useColorModeValue("#ffffffd6", "#1a202cd1")}
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto" as="nav">
           <Flex>
@@ -36,7 +38,7 @@ export default function NavHero() {
 
               <VisuallyHidden>EPICE 2021</VisuallyHidden>
             </chakra.a>
-            <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
+            <chakra.h1 fontSize="xl" fontWeight="medium" ml="2" color={useColorModeValue("#18216d", "white")}>
               EPICE 2021
             </chakra.h1>
           </Flex>
@@ -87,26 +89,39 @@ export default function NavHero() {
                 </Link>
               </LinkButton>
             </HStack>
-            <Button
-              bg="purple.500"
-              color="white"
-              size="sm"
-              _hover={{
-                bg: 'purple.600'
-              }}>
-              <Link
-                to="contact"
-                spy={false}
-                smooth="easeInOutQuart"
-                duration={DURATION}
-                activeClass="active"
-                style={{
-                  color: 'currentcolor'
-                }}
-              >
-                Inscrições
-              </Link>
-            </Button>
+            <HStack spacing={1} direction='row'>
+              <Button
+                bg="purple.500"
+                color="white"
+                size="sm"
+                _hover={{
+                  bg: 'purple.600'
+                }}>
+                <Link
+                  to="contact"
+                  spy={false}
+                  smooth="easeInOutQuart"
+                  duration={DURATION}
+                  activeClass="active"
+                  style={{
+                    color: 'currentcolor'
+                  }}
+                >
+                  Inscrições
+                </Link>
+              </Button>
+              <IconButton
+                size="md"
+                fontSize="lg"
+                aria-label={`Switch to ${colorMode === 'light' ? 'Dark' : 'Light'} mode`}
+                bg="gray.500"
+                _hover={{ bg: 'gray.600' }}
+                color="white"
+                ml={{ base: "0", md: "3" }}
+                onClick={toggleColorMode}
+                icon={colorMode !== 'light' ? <FaMoon /> : <FaSun />}
+              />
+            </HStack>
             <Box display={{ base: "inline-flex", md: "none" }}>
               <IconButton
                 display={{ base: "flex", md: "none" }}

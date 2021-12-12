@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   Box, Container, Text, Heading,
-  Stack, SimpleGrid, Avatar, Center, IconButton
+  Stack, SimpleGrid, Avatar, Center, IconButton,useColorModeValue
 } from '@chakra-ui/react';
 import { Fade } from 'react-awesome-reveal'
 import { palestrantes } from '../../content/palestrantes';
-import { FaInstagram, FaGithub } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 const Palestrantes: React.FC = () => {
+  const ic = useColorModeValue("#18216d", "white");
   return (
     <Box as="section" id="palestras">
       <Box>
@@ -20,7 +21,7 @@ const Palestrantes: React.FC = () => {
           >
             Palestrantes
           </Heading>
-          <Text maxW="56ch" mx="auto" fontSize="lg">
+          <Text maxW="56ch" mx="auto" fontSize="lg" color={ic}>
             Pessoas incríveis que contribuíram com tempo,
             esforço e pensamento. Sem eles,
             este projeto não seria possível.
@@ -45,10 +46,10 @@ const Palestrantes: React.FC = () => {
                         />
                       </Center>
                       <Stack spacing={3}>
-                        <Text fontWeight="bold" fontSize="md">
+                        <Text fontWeight="bold" fontSize="md" color={ic}>
                           {member.name}
                         </Text>
-                        <Text dangerouslySetInnerHTML={{
+                        <Text color={ic} dangerouslySetInnerHTML={{
                           __html: member.frase
                         }} />
                         <Center>
@@ -57,7 +58,7 @@ const Palestrantes: React.FC = () => {
                               as="a"
                               href="#"
                               aria-label="Instagram"
-                              icon={<FaInstagram fontSize="30px" />}
+                              icon={<FaInstagram fontSize="24px" />}
                               _hover={{
                                 bg: 'gray.50'
                               }}
@@ -66,7 +67,7 @@ const Palestrantes: React.FC = () => {
                               as="a"
                               href="#"
                               aria-label="Githu"
-                              icon={<FaGithub fontSize="30px" />}
+                              icon={<FaLinkedinIn fontSize="24px" />}
                               _hover={{
                                 bg: 'gray.50'
                               }}

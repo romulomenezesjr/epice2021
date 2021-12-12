@@ -1,7 +1,7 @@
 import { Row, Col } from "antd";
 import { Slide, Zoom } from "react-awesome-reveal";
 import { ContactProps, ValidationTypeProps } from "./types";
-import { Container, Heading, Text } from '@chakra-ui/react'
+import { Container, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import { useForm } from "../../common/utils/useForm";
 import validate from "../../common/utils/validationRules";
 import { Button } from "../../common/Button";
@@ -23,16 +23,17 @@ const Contact = ({ title, content, id }: ContactProps) => {
       </Zoom>
     );
   };
+  const icp = useColorModeValue("#18216d", "white");
 
   return (
     <Container id={id} maxW="160ch" mb={10}>
       <Row justify="space-between" align="middle">
         <Col lg={12} md={11} sm={24} xs={24}>
           <Slide direction="left">
-            <Heading>
+            <Heading color={icp}>
               {title}
             </Heading>
-            <Text>{content}</Text>
+            <Text color={icp}>{content}</Text>
           </Slide>
         </Col>
         <Col lg={12} md={12} sm={24} xs={24}>
@@ -70,9 +71,11 @@ const Contact = ({ title, content, id }: ContactProps) => {
               <ButtonContainer>
                 <Button
                   mt="6"
-                  colorScheme="purple"
+                  bg="purple.500"
                   size="lg"
-                  name="submit">
+                  name="submit"
+                  type="submit"
+                >
                   Realizar inscrição
                 </Button>
               </ButtonContainer>

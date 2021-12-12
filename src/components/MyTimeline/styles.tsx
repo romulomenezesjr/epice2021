@@ -32,7 +32,6 @@ export const TimelineSection = styled("section")`
     width: 25px;
     height: 25px;
     right: -17px;
-    background-color: white;
     border: 4px solid #FF9F55;
     top: 15px;
     border-radius: 50%;
@@ -58,9 +57,9 @@ export const TimelineSection = styled("section")`
     width: 0;
     z-index: 1;
     right: 30px;
-    border: medium solid white;
+    border: medium solid #dfeafe;
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent #dfeafe ;
   }
   
   /* Add arrows to the right container (pointing left) */
@@ -72,9 +71,9 @@ export const TimelineSection = styled("section")`
     width: 0;
     z-index: 1;
     left: 30px;
-    border: medium solid white;
+    border: medium solid #dfeafe;
     border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+    border-color: transparent #dfeafe transparent transparent;
   }
   
   /* Fix the circle for containers on the right side */
@@ -107,9 +106,9 @@ export const TimelineSection = styled("section")`
   /* Make sure that all arrows are pointing leftwards */
     .container::before {
       left: 60px;
-      border: medium solid white;
+      border: medium solid #dfeafe;
       border-width: 10px 10px 10px 0;
-      border-color: transparent white transparent transparent;
+      border-color: transparent #dfeafe transparent transparent;
     }
   
   /* Make sure all circles are at the same spot */

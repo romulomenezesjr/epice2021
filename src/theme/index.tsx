@@ -9,11 +9,7 @@ type PropsProvider = {
 const ThemeProvider: React.FC<PropsProvider> = ({ children }) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <ColorModeProvider options={{
-        useSystemColorMode: false,
-      }}>
-        {children}
-      </ColorModeProvider>
+      {children}
     </ChakraProvider>
   );
 };

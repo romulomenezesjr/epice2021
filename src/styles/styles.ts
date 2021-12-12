@@ -27,28 +27,23 @@ export const Styles = createGlobalStyle`
         padding:0;
         border: 0;
         outline: 0;
-        background: #fff;
         overflow-x: hidden;
     }
-
+    body::-webkit-scrollbar {
+        width: 10px;
+      }
+      body::-webkit-scrollbar-track {
+        background: black;
+      }
+      body::-webkit-scrollbar-thumb {
+        background: #454545;
+        border-radius: 3px;
+      }
+      body::-webkit-scrollbar-thumb:hover {
+        background: grey;
+      }
     a:hover {
-        color: #18216d;
-    }
-
-    input,
-    textarea {
-        border-radius: 4px;
-        border: 0;
-        background: rgb(241, 242, 243);
-        transition: all 0.3s ease-in-out;  
-        outline: none;
-        width: 100%;  
-        padding: 1rem 1.25rem;
-
-        :focus-within {
-            background: none;
-            box-shadow: #2e186a 0px 0px 0px 1px;
-        }
+        color: #red;
     }
 
     h1,
@@ -58,7 +53,7 @@ export const Styles = createGlobalStyle`
     h5,
     h6 {
         font-family: 'Motiva Sans Bold', serif;
-        color: #18216d;
+        // color: #18216d;
         font-size: 56px;
         line-height: 1.18;
 
@@ -72,7 +67,7 @@ export const Styles = createGlobalStyle`
     }
 
     p {
-        color: #18216d;
+        // color: #18216d;
         font-size: 21px;        
         line-height: 1.41;
     }
@@ -85,7 +80,11 @@ export const Styles = createGlobalStyle`
         text-decoration: none;
         outline: none;
     }
-    
+    input::placeholder {
+        color: #1c87c9;
+        opacity: 1;
+        font-weight: 300
+      }
     *:focus {
         outline: none;
     }

@@ -8,6 +8,7 @@ import {
 	Image,
 	Icon,
 	IconProps,
+	useColorModeValue
 } from '@chakra-ui/react';
 import { Button } from '../../common/Button';
 import { Link } from 'react-scroll';
@@ -18,6 +19,7 @@ type HomeProps = {
 }
 
 export default function HomeHero({ title, subtitle, button }: HomeProps) {
+	const icp = useColorModeValue("#18216d", "white");
 	return (
 		<Container maxW={'7xl'} id="intro">
 			<Stack
@@ -29,7 +31,9 @@ export default function HomeHero({ title, subtitle, button }: HomeProps) {
 					<Heading
 						lineHeight={1.1}
 						fontWeight={600}
-						fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
+						fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
+						color={icp}
+					>
 						<Text
 							as={'span'}
 							position={'relative'}
@@ -48,25 +52,25 @@ export default function HomeHero({ title, subtitle, button }: HomeProps) {
 						<Text as="span">, 2021.</Text>
 						<br />
 					</Heading>
-					<Text color={'gray.500'}>
+					<Text color={icp}>
 						{subtitle}
 					</Text>
 					<Stack
 						spacing={{ base: 4, sm: 6 }}
 						direction='column'
 					>
-						<Button bg="purple.500">
-							<Link
-								to="contact"
-								spy={false}
-								smooth="easeInOutQuart"
-								duration="5000"
-								activeClass="active"
-								color="white"
-							>
+						<Link
+							to="contact"
+							spy={false}
+							smooth="easeInOutQuart"
+							duration="5000"
+							activeClass="active"
+							color="white"
+						>
+							<Button bg="purple.500">
 								{button}
-							</Link>
-						</Button>
+							</Button>
+						</Link>
 					</Stack>
 				</Stack>
 				<Flex
@@ -83,7 +87,7 @@ export default function HomeHero({ title, subtitle, button }: HomeProps) {
 						top={'-20%'}
 						left={0}
 						zIndex={-1}
-						color='red.50'
+						color='gray.400'
 					/>
 					<Box
 						rounded={'2xl'}
@@ -96,7 +100,7 @@ export default function HomeHero({ title, subtitle, button }: HomeProps) {
 							w={'100%'}
 							h={'100%'}
 							src={
-								'/img/svg/developer.svg'
+								'/img/svg/undraw_real_time_collaboration_c62i.svg'
 							}
 						/>
 					</Box>
