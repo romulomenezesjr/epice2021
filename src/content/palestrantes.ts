@@ -66,7 +66,7 @@ export const palestrantes = [
     "instagram": "/",
     "email": null,
     "linkedinIn": "/",
-    "github": "https://github.com/",
+    "github": null,
     "frase": "Mesa Redonda com ex-alunos do curso de Informática",
   },
   {
