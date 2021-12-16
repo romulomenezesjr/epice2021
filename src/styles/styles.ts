@@ -47,9 +47,6 @@ a{
       body::-webkit-scrollbar-thumb:hover {
         background: grey;
       }
-    a:hover {
-        color: red;
-    }
 
     h1,
     h2,
