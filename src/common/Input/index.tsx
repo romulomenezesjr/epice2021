@@ -3,28 +3,38 @@ import {
   Input as ChakraInput,
   InputGroup,
   InputLeftElement,
+  useColorModeValue,
+  FormControl,
+  FormLabel
 } from '@chakra-ui/react';
 import { InputProps } from "../types";
-
-const Input = ({ name, placeholder, onChange, type }: InputProps) => {
+const Input = ({ name, txt, placeholder, onChange, type,children }: InputProps) => {
   return (
-    <InputGroup>
-      <InputLeftElement
-        width="3rem"
-        height="100%"
-        color="black"
-      />
-      <ChakraInput
-        required
-        onChange={onChange}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        backgroundColor="gray.800"
-        focusBorderColor="purple.500"
-        rounded="lg"
-      />
-    </InputGroup>
+    <FormControl>
+      <FormLabel color={useColorModeValue("#18216d", "white")}>{txt}</FormLabel>
+      <InputGroup>
+        <InputLeftElement
+          width="3rem"
+          height="100%"
+          children={children}
+          color={useColorModeValue("#18216d", "white")}
+        />
+        <ChakraInput
+          required
+          onChange={onChange}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          focusBorderColor="purple.500"
+          backgroundColor={useColorModeValue("white", "gray.800")}
+          border={0}
+          color={useColorModeValue("#18216d", "white")}
+          _placeholder={{
+            color: useColorModeValue("black", "white"),
+          }}
+        />
+      </InputGroup>
+    </FormControl>
   )
 };
 

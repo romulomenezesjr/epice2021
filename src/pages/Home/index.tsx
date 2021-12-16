@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react';
 import IntroContent from "../../content/IntroContent.json";
 import AboutContent from "../../content/AboutContent.json";
-import RegistrationContent from "../../content/RegistrationContent.json";
 import MeetingContent from "../../content/MeetingContent.json";
 
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
@@ -20,7 +19,7 @@ const HomeHero = lazy(() => import("../../components/Hero"));
 const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
 const MyTimeline = lazy(() => import("../../components/MyTimeline"));
-const Contact = lazy(() => import("../../components/ContactForm"));
+const Contact = lazy(() => import("../../components/ContactForm/Form"));
 
 export default function Home() {
   return (
@@ -42,14 +41,10 @@ export default function Home() {
       />
       <ContentBlock />
       <MyTimeline />
+      <Contact />
       <ContentTable
         title={MeetingContent.title}
         subtitle={MeetingContent.text}
-      />
-      <Contact
-        title={RegistrationContent.title}
-        content={RegistrationContent.text}
-        id="contact"
       />
     </Fragment>
   );

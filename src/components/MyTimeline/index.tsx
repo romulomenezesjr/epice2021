@@ -5,7 +5,7 @@ import { TimelineSection } from './styles'
 const MyTimeline = () => {
   const icp = useColorModeValue("#18216d", "#18216d");
   return (
-    <Box id="mission" py={30}>
+    <Box id="mission" pt={35}>
       <Container maxW="180ch" color={icp}>
         <Heading mb={2} mt={30} color={useColorModeValue("#18216d", "white")}>Programação:</Heading>
         <Text mb={3} color={useColorModeValue("#18216d", "white")}>De terça-feira, 30/11, à quinta-feira, 02/12.</Text>

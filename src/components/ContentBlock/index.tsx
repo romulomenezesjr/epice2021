@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   Box, Container, Text, Heading,
-  Stack, SimpleGrid, Avatar, Center, IconButton,useColorModeValue
+  Stack, SimpleGrid, Avatar, Center, IconButton, useColorModeValue
 } from '@chakra-ui/react';
 import { Fade } from 'react-awesome-reveal'
 import { palestrantes } from '../../content/palestrantes';
-import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 const Palestrantes: React.FC = () => {
   const ic = useColorModeValue("#18216d", "white");
   return (
@@ -43,6 +43,7 @@ const Palestrantes: React.FC = () => {
                           name={member.name}
                           borderColor="purple.500"
                           borderWidth={4}
+                          key={member.id}
                         />
                       </Center>
                       <Stack spacing={3}>
@@ -53,25 +54,43 @@ const Palestrantes: React.FC = () => {
                           __html: member.frase
                         }} />
                         <Center>
-                          <Stack direction={'row'} spacing={6}>
+                          <Stack direction={'row'} spacing={3}>
                             <IconButton
                               as="a"
-                              href="#"
+                              href={member.instagram}
+                              target="_blank"
                               aria-label="Instagram"
                               icon={<FaInstagram fontSize="24px" />}
-                              _hover={{
-                                bg: 'gray.50'
-                              }}
                             />
+                            {member.email != null ? (
+                              <IconButton
+                                as="a"
+                                href={member.email}
+                                target="_blank"
+                                aria-label="linkedinIn"
+                                icon={<FaGithub fontSize="24px" />}
+                              />
+                            ):(
+                              <React.Fragment />
+                            )}
                             <IconButton
                               as="a"
-                              href="#"
-                              aria-label="Githu"
+                              href={member.linkedinIn}
+                              target="_blank"
+                              aria-label="linkedinIn"
                               icon={<FaLinkedinIn fontSize="24px" />}
-                              _hover={{
-                                bg: 'gray.50'
-                              }}
                             />
+                            {member.github != null ? (
+                              <IconButton
+                                as="a"
+                                href={member.github}
+                                target="_blank"
+                                aria-label="linkedinIn"
+                                icon={<FaGithub fontSize="24px" />}
+                              />
+                            ):(
+                              <React.Fragment />
+                            )}
                           </Stack>
                         </Center>
                       </Stack>

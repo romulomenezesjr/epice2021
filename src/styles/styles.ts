@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 export const Styles = createGlobalStyle`
-
+':focus:not(:focus-visible):not([role="dialog"]):not([role="menu"])': {
+	boxShadow: 'none !important'
+}
     @font-face {
         font-family: "Motiva Sans Light";
         src: url("/fonts/Motiva-Sans-Light.ttf") format("truetype");
@@ -20,7 +22,10 @@ export const Styles = createGlobalStyle`
     a {
         font-family: 'Motiva Sans Light', sans-serif;
     }
+a{
+    cursor: pointer;
 
+}
 
     body {
         margin:0;
@@ -43,7 +48,7 @@ export const Styles = createGlobalStyle`
         background: grey;
       }
     a:hover {
-        color: #red;
+        color: red;
     }
 
     h1,
@@ -80,27 +85,117 @@ export const Styles = createGlobalStyle`
         text-decoration: none;
         outline: none;
     }
-    input::placeholder {
-        color: #1c87c9;
-        opacity: 1;
-        font-weight: 300
-      }
     *:focus {
         outline: none;
     }
 
-    .about-block-image svg {
+    @-webkit-keyframes ani-mouse {
+        0% {
+        opacity: 1;
+        top: 29%;
+        }
+        15% {
+        opacity: 1;
+        top: 50%;
+        }
+        50% {
+        opacity: 0;
+        top: 50%;
+        }
+        100% {
+        opacity: 0;
+        top: 29%;
+        }
+      }
+      @-moz-keyframes ani-mouse {
+        0% {
+        opacity: 1;
+        top: 29%;
+        }
+        15% {
+        opacity: 1;
+        top: 50%;
+        }
+        50% {
+        opacity: 0;
+        top: 50%;
+        }
+        100% {
+        opacity: 0;
+        top: 29%;
+        }
+      }
+      @keyframes ani-mouse {
+        0% {
+        opacity: 1;
+        top: 29%;
+        }
+        15% {
+        opacity: 1;
+        top: 50%;
+        }
+        50% {
+        opacity: 0;
+        top: 50%;
+        }
+        100% {
+        opacity: 0;
+        top: 29%;
+        }
+      }
+       .scroll-btn {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
         text-align: center;
-    }
-
-    .ant-drawer-body {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        padding-top: 1.5rem;
-    }
-
-    .ant-drawer-content-wrapper {
-        width: 300px !important;
-    }
+      }
+      .scroll-btn > * {
+        display: inline-block;
+        line-height: 18px;
+        font-size: 13px;
+        font-weight: normal;
+        color: #7f8c8d;
+        color: #ffffff;
+        font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        letter-spacing: 2px;
+      }
+      .scroll-btn > *:hover,
+      .scroll-btn > *:focus,
+      .scroll-btn > *.active {
+        color: #ffffff;
+      }
+      .scroll-btn > *:hover,
+      .scroll-btn > *:focus,
+      .scroll-btn > *:active,
+      .scroll-btn > *.active {
+        opacity: 0.8;
+        filter: alpha(opacity=80);
+      }
+      .scroll-btn .mouse {
+        position: relative;
+        display: block;
+        width: 28px;
+        height: 55px;
+        margin: 0 auto 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 3px solid #DD6B20;
+        border-radius: 23px;
+      }
+      .scroll-btn .mouse > * {
+        position: absolute;
+        display: block;
+        top: 29%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        margin: -4px 0 0 -4px;
+        background: orange;
+        border-radius: 50%;
+        -webkit-animation: ani-mouse 2.5s linear infinite;
+        -moz-animation: ani-mouse 2.5s linear infinite;
+        animation: ani-mouse 2.5s linear infinite;
+      }      
 `;

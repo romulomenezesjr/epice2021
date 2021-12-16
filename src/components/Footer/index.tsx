@@ -8,8 +8,8 @@ import {
   useColorModeValue,
 
 } from '@chakra-ui/react';
-import { FaInstagram, FaTwitter } from 'react-icons/fa';
-
+import { FaInstagram, FaTwitter, FaGithub } from 'react-icons/fa';
+import * as ROUTES from '../../constant/routes'
 export default function Footer() {
   return (
     <Box
@@ -39,9 +39,9 @@ export default function Footer() {
           align={{ base: 'center', md: 'center' }}>
           <Text>© 2021 Epice</Text>
           <Stack direction={'row'} spacing={6}>
-            <IconButton as="a" href="#" aria-label="Discord" icon={<FaInstagram fontSize="20px" />} />
-            <IconButton as="a" href="#" aria-label="Instagram" icon={<FaInstagram fontSize="20px" />} />
-            <IconButton as="a" href="#" aria-label="Twitter" icon={<FaTwitter fontSize="20px" />} />
+            <IconButton as="a" href={ROUTES.GITHUB} aria-label="Github" target="_blank" icon={<FaGithub fontSize="20px" />} />
+            <IconButton as="a" href={ROUTES.INSTAGRAM} target="_blank" aria-label="Instagram" icon={<FaInstagram fontSize="20px" />} />
+            <IconButton as="a" href={ROUTES.TWITTER} aria-label="Twitter" target="_blank" icon={<FaTwitter fontSize="20px" />} />
           </Stack>
         </Container>
       </Box>

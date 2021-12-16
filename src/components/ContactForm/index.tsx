@@ -62,8 +62,8 @@ const Contact = ({ title, content, id }: ContactProps) => {
               <Col span={24}>
                 <Input
                   placeholder="Curso"
-                  value={values.message || ""}
                   name="course"
+                  value={values.message || ""}
                   onChange={handleChange}
                 />
                 <ValidationType type="course" />

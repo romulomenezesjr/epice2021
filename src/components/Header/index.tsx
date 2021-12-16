@@ -1,15 +1,14 @@
 /* eslint-disable */
 import React from 'react';
 import {
-  Box, Button, chakra, CloseButton, Flex, HStack,
-  IconButton, VisuallyHidden, VStack, useDisclosure, useColorModeValue, useColorMode
+  Button, chakra, Flex, HStack,
+  IconButton, VisuallyHidden, useColorModeValue, useColorMode
 } from '@chakra-ui/react';
 import { Link } from "react-scroll";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { Desktop, Mobile } from './components'
 const DURATION = 1000;
-import { AiOutlineMenu } from 'react-icons/ai';
 export default function NavHero() {
-  const mobileNav = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode()
   return (
     <React.Fragment>
@@ -43,52 +42,7 @@ export default function NavHero() {
             </chakra.h1>
           </Flex>
           <HStack display="flex" alignItems="center" spacing={1}>
-            <HStack
-              spacing={1}
-              mr={1}
-              color="brand.500"
-              display={{ base: "none", md: "inline-flex" }}
-            >
-              <LinkButton>
-                <Link
-                  to="palestras"
-                  spy={false}
-                  smooth="easeInOutQuart"
-                  duration={DURATION}
-                  activeClass="active"
-                >
-                  Palestras
-                </Link>
-              </LinkButton>
-              <LinkButton>
-                <Link
-                  to="mesa-redonda"
-                  spy={false}
-                  smooth="easeInOutQuart"
-                  duration={DURATION}
-                  activeClass="active"
-                  style={{
-                    paddingLeft: '10px'
-                  }}
-                >
-                  Mesa Redonda
-                </Link>
-              </LinkButton>
-              <LinkButton>
-                <Link
-                  to="mission"
-                  spy={false}
-                  smooth="easeInOutQuart"
-                  duration={DURATION}
-                  activeClass="active"
-                  style={{
-                    paddingLeft: '10px'
-                  }}
-                >
-                  Programação
-                </Link>
-              </LinkButton>
-            </HStack>
+            <Desktop />
             <HStack spacing={1} direction='row'>
               <Button
                 bg="purple.500"
@@ -114,110 +68,19 @@ export default function NavHero() {
                 size="md"
                 fontSize="lg"
                 aria-label={`Switch to ${colorMode === 'light' ? 'Dark' : 'Light'} mode`}
-                bg="gray.500"
-                _hover={{ bg: 'gray.600' }}
-                color="white"
+                bg={useColorModeValue("gray.50", "#464460")}
+                _hover={{ bg: useColorModeValue("gray.50", "#464460")}}
+                color={useColorModeValue("gray.800", "white")}
+                boxShadow={"none"}
                 ml={{ base: "0", md: "3" }}
                 onClick={toggleColorMode}
                 icon={colorMode !== 'light' ? <FaMoon /> : <FaSun />}
               />
             </HStack>
-            <Box display={{ base: "inline-flex", md: "none" }}>
-              <IconButton
-                display={{ base: "flex", md: "none" }}
-                aria-label="Open menu"
-                fontSize="20px"
-                color='black'
-                variant="ghost"
-                onClick={mobileNav.onOpen}
-                icon={<AiOutlineMenu />}
-              />
-              <VStack
-                pos="absolute"
-                top={0}
-                left={0}
-                right={0}
-                display={mobileNav.isOpen ? "flex" : "none"}
-                flexDirection="column"
-                p={2}
-                pb={4}
-                m={2}
-                bg="white"
-                spacing={3}
-                rounded="sm"
-                shadow="sm"
-              >
-                <CloseButton
-                  aria-label="Close menu"
-                  onClick={mobileNav.onClose}
-                />
-                <LinkButton>
-                  <Link
-                    to="palestras"
-                    spy={false}
-                    smooth="easeInOutQuart"
-                    duration={DURATION}
-                    activeClass="active"
-                  >
-                    Palestras
-                  </Link>
-                </LinkButton>
-                <LinkButton>
-                  <Link
-                    to="mesa-redonda"
-                    spy={false}
-                    smooth="easeInOutQuart"
-                    duration={DURATION}
-                    activeClass="active"
-                    style={{
-                      paddingLeft: '10px'
-                    }}
-                  >
-                    Mesa Redonda
-                  </Link>
-                </LinkButton>
-                <LinkButton>
-                  <Link
-                    to="mesa-redonda"
-                    spy={false}
-                    smooth="easeInOutQuart"
-                    duration={DURATION}
-                    activeClass="active"
-                    style={{
-                      paddingLeft: '10px'
-                    }}
-                  >
-                    Programação
-                  </Link>
-                </LinkButton>
-              </VStack>
-            </Box>
+            <Mobile />
           </HStack>
         </Flex>
       </chakra.header>
     </React.Fragment >
   );
 };
-type LinkProps = {
-  children?: React.ReactNode;
-}
-const LinkButton = ({ children }: LinkProps) => {
-  return (
-    <chakra.p
-      fontSize="18px"
-      fontWeight='bold'
-      _hover={{
-        color: 'rgb(255, 130, 92)',
-        textUnderlinePosition: 'under',
-        textDecoration: 'rgb(255, 130, 92) wavy underline'
-      }}
-      _active={{
-        color: 'rgb(255, 130, 92)',
-        textUnderlinePosition: 'under',
-        textDecoration: 'rgb(255, 130, 92) wavy underline'
-      }}
-    >
-      {children}
-    </chakra.p>
-  )
-}

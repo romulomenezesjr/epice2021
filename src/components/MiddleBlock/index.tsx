@@ -2,7 +2,7 @@ import React from 'react';
 import { Jumbotron } from '../../common/';
 import {
   Heading, Image, Skeleton, Text, useColorModeValue, Icon, Flex,
-  IconProps
+  IconProps, Box
 } from '@chakra-ui/react';
 interface MiddleBlockProps {
   title: string;
@@ -14,36 +14,38 @@ interface MiddleBlockProps {
 const MiddleBlock: React.FC<MiddleBlockProps> = ({ title, content, id, directions, img }) => {
   const ic = useColorModeValue("#18216d", "white");
   return (
-    <Jumbotron.Container>
-      <Jumbotron key={id} directions={directions}>
-        <Jumbotron.Pane>
-          <Heading color={ic}>{title}</Heading>
-          <Text color={ic}>
-            {content}
-          </Text>
-        </Jumbotron.Pane>
-        <Jumbotron.Pane>
-          <Flex
-            flex={1}
-            justify={'center'}
-            align={'center'}
-            position={'relative'}
-            w={'full'}>
-            <Blob
-              mt={2}
-              w={'150%'}
-              h={'150%'}
-              position={'absolute'}
-              top={'-20%'}
-              left={0}
-              zIndex={-1}
-              color='gray.400'
-            />
-            <Image id={`id${id}`} src={img} alt={title} fallback={<Skeleton />} />
-          </Flex>
-        </Jumbotron.Pane>
-      </Jumbotron>
-    </Jumbotron.Container>
+    <Box id="sobre" pt={7}>
+      <Jumbotron.Container>
+        <Jumbotron key={id} directions={directions}>
+          <Jumbotron.Pane>
+            <Heading color={ic}>{title}</Heading>
+            <Text color={ic}>
+              {content}
+            </Text>
+          </Jumbotron.Pane>
+          <Jumbotron.Pane>
+            <Flex
+              flex={1}
+              justify={'center'}
+              align={'center'}
+              position={'relative'}
+              w={'full'}>
+              <Blob
+                mt={2}
+                w={'150%'}
+                h={'150%'}
+                position={'absolute'}
+                top={'-20%'}
+                left={0}
+                zIndex={-1}
+                color='purple.300'
+              />
+              <Image mt={2} id={`id${id}`} src={img} alt={title} fallback={<Skeleton />} />
+            </Flex>
+          </Jumbotron.Pane>
+        </Jumbotron>
+      </Jumbotron.Container>
+    </Box>
   );
 };
 
