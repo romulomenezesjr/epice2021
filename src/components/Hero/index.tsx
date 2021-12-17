@@ -7,9 +7,9 @@ import {
 	Text,
 	Image,
 	useColorModeValue,
-	Center
+	Center,
+	Button
 } from '@chakra-ui/react';
-import { Button } from '../../common/Button';
 import { Link } from 'react-scroll';
 const DURATION = 1000;
 
@@ -68,7 +68,19 @@ export default function HomeHero({ title, subtitle, button }: HomeProps) {
 							activeClass="active"
 							color="white"
 						>
-							<Button bg="purple.500">
+							<Button
+								bg="purple.500"
+								rounded={'full'}
+								size={'lg'}
+								fontWeight={'normal'}
+								px={6}
+								color='white'
+								w="100%"
+								_hover={{
+									bg: 'purple.600'
+								}}
+								outline={'none'}
+							>
 								{button}
 							</Button>
 						</Link>
