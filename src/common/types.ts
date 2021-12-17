@@ -1,9 +1,11 @@
+import React from 'react'
+import { InputProps as ChakraInputProps, ButtonProps as ChakaraProps } from '@chakra-ui/react'
 export interface ContainerProps {
   border?: boolean;
   children: React.ReactNode;
 }
 
-export interface ButtonProps {
+export interface ButtonProps extends ChakaraProps{
   color?: string;
   fixedWidth?: boolean;
   name?: string;
@@ -17,13 +19,14 @@ export interface SvgIconProps {
   height: string;
 }
 
-export interface InputProps {
+export interface InputProps extends ChakraInputProps {
   name: string;
+  txt?: string;
   placeholder: string;
-  t: any;
   type?: string;
   value?: string;
-  onChange: (
+  children?: JSX.Element;
+  onChange?: (
     event:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>

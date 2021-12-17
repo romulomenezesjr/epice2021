@@ -1,94 +1,86 @@
-import { useState } from "react";
-import { Row, Col, Drawer } from "antd";
-import { withTranslation } from "react-i18next";
-import Container from "../../common/Container";
-import { Image } from "../../common/Image";
-import { Button } from "../../common/Button";
+/* eslint-disable */
+import React from 'react';
 import {
-  HeaderSection,
-  LogoContainer,
-  Burger,
-  NotHidden,
-  Menu,
-  CustomNavLinkSmall,
-  Label,
-  Outline,
-  Span,
-} from "./styles";
-
-const Header = ({ t }: any) => {
-  const [visible, setVisibility] = useState(false);
-
-  const showDrawer = () => {
-    setVisibility(!visible);
-  };
-
-  const onClose = () => {
-    setVisibility(!visible);
-  };
-
-  const MenuItem = () => {
-    const scrollTo = (id: string) => {
-      const element = document.getElementById(id) as HTMLDivElement;
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
-      setVisibility(false);
-    };
-    return (
-      <>
-        <CustomNavLinkSmall onClick={() => scrollTo("about")}>
-          <Span>{t("Palestras")}</Span>
-        </CustomNavLinkSmall>
-        
-        <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
-          <Span>{t("Programação")}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("product")}>
-          <Span>{t("Mesa Redonda")}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall
-          style={{ width: "180px" }}
-          onClick={() => scrollTo("contact")}
-        >
-          <Span>
-            <Button>{t("Inscrições")}</Button>
-          </Span>
-        </CustomNavLinkSmall>
-      </>
-    );
-  };
-
+  Button, chakra, Flex, HStack,
+  IconButton, VisuallyHidden, useColorModeValue, useColorMode
+} from '@chakra-ui/react';
+import { Link } from "react-scroll";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { Desktop, Mobile } from './components'
+const DURATION = 1000;
+export default function NavHero() {
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <HeaderSection>
-      <Container>
-        <Row justify="space-between">
-          <LogoContainer to="/" aria-label="homepage">
-            <Image src="epice.png" width="300px" height="100px" />
-          </LogoContainer>
-          <NotHidden>
-            <MenuItem />
-          </NotHidden>
-          <Burger onClick={showDrawer}>
-            <Outline />
-          </Burger>
-        </Row>
-        <Drawer closable={false} visible={visible} onClose={onClose}>
-          <Col style={{ marginBottom: "2.5rem" }}>
-            <Label onClick={onClose}>
-              <Col span={12}>
-                <Menu>Menu</Menu>
-              </Col>
-              <Col span={12}>
-                <Outline />
-              </Col>
-            </Label>
-          </Col>
-          <MenuItem />
-        </Drawer>
-      </Container>
-    </HeaderSection>
+    <React.Fragment>
+      <chakra.header
+        borderTop="10px solid #8257e5"
+        shadow="md"
+        transition="all 0.5s ease-in-out"
+        pos="fixed"
+        top="0"
+        zIndex="modal"
+        w="full"
+        px={{ base: 2, sm: 4 }}
+        py={4}
+        mb={2}
+        boxShadow="none"
+        bg={useColorModeValue("#ffffffd6", "#1a202cd1")}
+      >
+        <Flex alignItems="center" justifyContent="space-between" mx="auto" as="nav">
+          <Flex>
+            <chakra.a
+              href="/"
+              title="EPICE 2021"
+              display="flex"
+              alignItems="center"
+            >
+
+              <VisuallyHidden>EPICE 2021</VisuallyHidden>
+            </chakra.a>
+            <chakra.h1 fontSize="xl" fontWeight="medium" ml="2" color={useColorModeValue("#18216d", "white")}>
+              EPICE 2021
+            </chakra.h1>
+          </Flex>
+          <HStack display="flex" alignItems="center" spacing={1}>
+            <Desktop />
+            <HStack spacing={1} direction='row'>
+              <Button
+                bg="purple.500"
+                color="white"
+                size="sm"
+                _hover={{
+                  bg: 'purple.600'
+                }}>
+                <Link
+                  to="contact"
+                  spy={false}
+                  smooth="easeInOutQuart"
+                  duration={DURATION}
+                  activeClass="active"
+                  style={{
+                    color: 'currentcolor'
+                  }}
+                >
+                  Inscrições
+                </Link>
+              </Button>
+              <IconButton
+                size="md"
+                fontSize="lg"
+                aria-label={`Switch to ${colorMode === 'light' ? 'Dark' : 'Light'} mode`}
+                bg={useColorModeValue("gray.50", "#464460")}
+                _hover={{ bg: useColorModeValue("gray.50", "#464460")}}
+                color={useColorModeValue("gray.800", "white")}
+                boxShadow={"none"}
+                ml={{ base: "0", md: "3" }}
+                onClick={toggleColorMode}
+                icon={colorMode !== 'light' ? <FaMoon /> : <FaSun />}
+              />
+            </HStack>
+            <Mobile />
+          </HStack>
+        </Flex>
+      </chakra.header>
+    </React.Fragment >
   );
 };
-
-export default withTranslation()(Header);
