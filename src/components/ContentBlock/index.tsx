@@ -6,6 +6,7 @@ import {
 import { Fade } from 'react-awesome-reveal'
 import { palestrantes } from '../../content/palestrantes';
 import { FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import { AiOutlineMail } from 'react-icons/ai';
 const Palestrantes: React.FC = () => {
   const ic = useColorModeValue("#18216d", "white");
   return (
@@ -67,8 +68,8 @@ const Palestrantes: React.FC = () => {
                                 as="a"
                                 href={member.email}
                                 target="_blank"
-                                aria-label="linkedinIn"
-                                icon={<FaGithub fontSize="24px" />}
+                                aria-label="Eamil"
+                                icon={<AiOutlineMail fontSize="24px" />}
                               />
                             ):(
                               <React.Fragment />
